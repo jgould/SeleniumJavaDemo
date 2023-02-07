@@ -116,3 +116,46 @@ Add a entry and and paste the path copied earlier
 Open the command Line
 Type mvn
 After a few seconds a Build Failure message will be displayed - This is fine, don't panic
+
+## TestNG
+
+Navigate to the Maven repository and search for cucumber testing
+Click on the first result (Cucumber JVM: TestNG)
+Select the latest version and copy the Maven tab
+Return to the Pom.xml file in the project
+Paste the copied code into dependencies
+
+Create a new class under the package containing the features files
+Call the class TestNGRunnerTest (the Test is important to make sure that Maven picks it up properly)
+Replace class with the following code:
+
+@CucumberOptions(plugin = "message:target/cucumber-report.ndjson")
+public class TestNGRunnerTest extends AbstractTestNGCucumberTests {
+
+}
+
+import CucumberOptions and AbstractTestNGCucumberTests 
+
+Right click on TestNGRunnerTest then scroll down to Run As and click on cucumber.feature
+The code should run successfully, but will display the errors accociated with unimplemented steps
+
+Now switch to the command line and enter mvn clean test
+The code should run successfully, but will display the errors accociated with unimplemented steps
+
+## Cucumber Hooks
+
+Cucumber has a number of hooks that can be used to run specific code, for example two of these are BeforeAll (As the name suggests it runs the code within prior to test run) and AfterClass (the same thing but after the test run)
+
+Create a new class under the same package as the TestNGRunnerTest file then enter the code below:
+
+@BeforeClass
+public void beforeClass(){
+	System.out.println("\nRuns before a class\n");
+}
+
+@AfterClass
+public void afterClass(){
+	System.out.println("\nRuns after a class\n");
+}
+
+Run the tests, the Before text will appear before the tests and the After test after (obviously)
