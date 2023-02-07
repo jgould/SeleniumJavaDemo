@@ -100,4 +100,19 @@ Hover your mouse pointer over each one of the key works (Given, When, Then) and 
 Now right click on the project -> Configure -> Convert to Cucumber Project
 Return to the Feature file
 Hold control over one of the steps and click
-The Step definition file will be opened with the correct step definition displayed 
+The Step definition file will be opened with the correct step definition displayed
+  
+## Install Maven
+
+Download maven zip file from https://maven.apache.org/download.cgi?.
+Move a location other than downloads
+Navigate to the bin folder within it
+Copy the path
+Open the Systems properties varibles
+Open Eveironment variables
+Select the Path variable and click edit
+Add a entry and and paste the path copied earlier
+
+Open the command Line
+Type mvn
+After a few seconds a Build Failure message will be displayed - This is fine, don't panic
