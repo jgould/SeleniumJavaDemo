@@ -6,6 +6,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import Pages.ABPage;
+import Pages.AddRemovePage;
+import Pages.HomePage;
+import factory.DriverFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -14,33 +18,40 @@ public class DemoStepDefs {
 
 	private WebDriver driver;
 	
-	@Given("I am on the Google")
-	public void i_am_on_the_google() {
-		System.setProperty("webdriver.chrome.driver","C:\\Users\\james.gould\\Documents\\chromedriver.exe");
-		driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		driver.get("http://google.com");
+	@Given("I am on the demo page")
+	public void I_am_on_the_demo_page() {
+		driver = DriverFactory.getDriver();
+		new HomePage(driver).load("http://the-internet.herokuapp.com/");
 	}
 	
-	@Given("I dismiss the the Cookies pop up")
-	public void i_dismiss_the_the_cookies_pop_up() throws InterruptedException {
-		By dismissCookie = By.id("Accept all");
-		driver.wait(10);
-		driver.findElement(dismissCookie).click();
+	@When("I click on the AB Testing Link")
+	public void I_click_on_the_ab_testing_link() throws InterruptedException {
+		Thread.sleep(2000);
+		new HomePage(driver).abTesingLink.click();
 	}
-
-	private Object WebDriverWait(WebDriver driver2, int i) {
-		// TODO Auto-generated method stub
-		return null;
+		
+	@Then("the AB Testing page will be displayed")
+	public void the_menu_with_expand() throws InterruptedException {
+		Thread.sleep(2000);
+		new ABPage(driver).pageTitle.click();
 	}
-
-	@When("I click on Images")
-	public void i_click_on_images() {
+	
+	@Given("I click on the Add and Remove Elements Link")
+	public void I_click_on_the_add_and_remove_Elements_Link() throws InterruptedException {
+		Thread.sleep(2000);
+		new HomePage(driver).addRemoveElemental.click();
 	}
-
-	@Then("the Images page will be displayed")
-	public void the_images_page_will_be_displayed() {
+	
+	@Then("the Add and Remove Elements page will be displayed")
+	public void the_add_and_remove_lements_page_will_be_displayed() throws InterruptedException {
+		Thread.sleep(2000);
+		new AddRemovePage(driver).addElementButton.isDisplayed();
 	}
-
+	
+	@Then("the remove element button will be present")
+	public void the_remove_element_button_will_be_present() throws InterruptedException {
+		Thread.sleep(2000);
+		new AddRemovePage(driver).removeElementButton.isDisplayed();
+	}
 	
 }
