@@ -10,6 +10,6 @@ public class ABPage extends BasePage {
 		super(driver);
 	}
 	
-	@FindBy(xpath = "(//h3[normalize-space()='A/B Test Control'])[1]") public WebElement pageTitle;
+	@FindBy(xpath = "(//h3[normalize-space()='A/B Test Control']") public WebElement pageTitle;
 	
 }

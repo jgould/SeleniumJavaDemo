@@ -26,31 +26,26 @@ public class DemoStepDefs {
 	
 	@When("I click on the AB Testing Link")
 	public void I_click_on_the_ab_testing_link() throws InterruptedException {
-		Thread.sleep(2000);
 		new HomePage(driver).abTesingLink.click();
 	}
 		
 	@Then("the AB Testing page will be displayed")
 	public void the_menu_with_expand() throws InterruptedException {
-		Thread.sleep(2000);
 		new ABPage(driver).pageTitle.click();
 	}
 	
 	@Given("I click on the Add and Remove Elements Link")
 	public void I_click_on_the_add_and_remove_Elements_Link() throws InterruptedException {
-		Thread.sleep(2000);
 		new HomePage(driver).addRemoveElemental.click();
 	}
 	
 	@Then("the Add and Remove Elements page will be displayed")
 	public void the_add_and_remove_lements_page_will_be_displayed() throws InterruptedException {
-		Thread.sleep(2000);
 		new AddRemovePage(driver).addElementButton.isDisplayed();
 	}
 	
 	@Then("the remove element button will be present")
 	public void the_remove_element_button_will_be_present() throws InterruptedException {
-		Thread.sleep(2000);
 		new AddRemovePage(driver).removeElementButton.isDisplayed();
 	}
 	
